@@ -1,0 +1,42 @@
+import random
+
+# Definindo as opções do jogo
+opcoes = ['pedra', 'papel', 'tesoura']
+
+# Função para verificar quem ganhou
+def verificar_ganhador(usuario, computador):
+    if usuario == computador:
+        return "Empate!"
+    elif usuario == 'pedra' and computador == 'tesoura':
+        return "Você ganhou!"
+    elif usuario == 'papel' and computador == 'pedra':
+        return "Você ganhou!"
+    elif usuario == 'tesoura' and computador == 'papel':
+        return "Você ganhou!"
+    else:
+        return "O computador ganhou!"
+
+# Loop principal do jogo
+while True:
+    # Pedindo a escolha do usuário
+    usuario = input("Escolha pedra, papel ou tesoura (ou 'sair' para encerrar o jogo): ").lower()
+
+    # Verificando se o usuário quer sair
+    if usuario == 'sair':
+        break
+
+    # Verificando se a escolha do usuário é válida
+    while usuario not in opcoes:
+        usuario = input("Escolha inválida. Escolha pedra, papel ou tesoura: ").lower()
+
+    # Escolhendo aleatoriamente a escolha do computador
+    computador = random.choice(opcoes)
+
+    # Mostrando a escolha do computador
+    print(f"O computador escolheu {computador}.")
+
+    # Verificando quem ganhou e mostrando a mensagem final
+    resultado = verificar_ganhador(usuario, computador)
+    print(f"{resultado}\n")
+
+print("O jogo foi encerrado.")
